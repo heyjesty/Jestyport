@@ -77,7 +77,8 @@
         font-family: var(--font-body);
         background-color: #0A0A0A;
         color: #FFFFFF;
-        line-height: 1.7;
+        line-height: 1.75;
+        letter-spacing: 0.02em;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         overflow-x: hidden;
@@ -2040,7 +2041,7 @@
         font-family: var(--font-body);
         font-size: 0.85rem;
         font-weight: 500;
-        letter-spacing: 0.04em;
+        letter-spacing: 0.08em;
         border-radius: 8px;
         cursor: pointer;
         transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -2215,14 +2216,14 @@
     .section-title {
         font-family: var(--font-display) !important;
         font-weight: 600 !important;
-        letter-spacing: -0.02em !important;
+        letter-spacing: 0.04em !important;
         color: #FFFFFF !important;
     }
 
     .about-label {
         font-size: 0.72rem !important;
         font-weight: 500 !important;
-        letter-spacing: 0.2em !important;
+        letter-spacing: 0.22em !important;
         color: rgba(255,255,255,0.35) !important;
         text-transform: uppercase !important;
     }
@@ -2255,13 +2256,13 @@
         background: none !important;
         -webkit-text-fill-color: #FFFFFF !important;
         color: #FFFFFF !important;
-        letter-spacing: 0.06em !important;
+        letter-spacing: 0.12em !important;
         animation: none !important;
     }
 
     .hero-role {
         font-size: 0.8rem !important;
-        letter-spacing: 0.25em !important;
+        letter-spacing: 0.3em !important;
         color: rgba(255,255,255,0.35) !important;
         font-weight: 400 !important;
     }

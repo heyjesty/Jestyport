@@ -157,7 +157,7 @@
 
     .hero-name {
         font-size: clamp(1.6rem, 7.5vw, 2.3rem) !important;
-        letter-spacing: 0.03em !important;
+        letter-spacing: 0.08em !important;
     }
 
     .hero-image-frame {
