@@ -1768,9 +1768,9 @@
 
     .contact-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
         gap: 1rem;
-        max-width: 1100px;
+        max-width: 1150px;
         margin: 0 auto;
     }
 
@@ -2317,12 +2317,18 @@
     }
 
     .contact-card a {
-        color: rgba(255,255,255,0.4) !important;
-        font-size: 0.82rem !important;
+        color: rgba(255,255,255,0.45) !important;
+        font-size: 0.78rem !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        max-width: 100% !important;
+        display: inline-block !important;
+        word-break: normal !important;
     }
 
     .contact-card a:hover {
-        color: rgba(255,255,255,0.8) !important;
+        color: rgba(255,255,255,0.9) !important;
     }
 
     /* ---------- FOOTER MINIMAL ---------- */

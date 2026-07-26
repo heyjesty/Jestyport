@@ -229,7 +229,12 @@
     }
 
     .contact-card {
-        padding: 1.4rem 1rem !important;
+        padding: 1.4rem 0.6rem !important;
+    }
+
+    .contact-card a {
+        font-size: clamp(0.68rem, 2.5vw, 0.78rem) !important;
+        white-space: nowrap !important;
     }
 
     .footer-inner {
