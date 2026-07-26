@@ -28,7 +28,7 @@ if (typeof lucide !== 'undefined') {
     // Wait for fonts, then measure path length for perfect animation
     document.addEventListener('DOMContentLoaded', () => {
         // Trigger exit after signature animation + subtitle delay
-        setTimeout(exitLoader, 2900);
+        setTimeout(exitLoader, 3100);
     });
 })();
 
