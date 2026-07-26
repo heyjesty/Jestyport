@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Playfair+Display:ital,wght@0,700;0,800;1,400;1,600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Syne:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
@@ -27,16 +27,51 @@
     <div class="cursor-dot" id="cursorDot"></div>
     <div class="cursor-ring" id="cursorRing"></div>
 
-    <!-- INTRO ANIMATION -->
-    <div class="intro">
-      <div class="intro-inner">
-        <h1 class="logo-header">
-          <span class="intro-logo">J</span><span class="intro-logo">E</span
-          ><span class="intro-logo">S</span><span class="intro-logo">T</span
-          ><span class="intro-logo">I</span><span class="intro-logo">N</span>
-        </h1>
-        <p class="intro-subtitle"></p>
+    <!-- PROJECT LIGHTBOX MODAL -->
+    <div class="lb-overlay" id="lbOverlay" role="dialog" aria-modal="true" aria-label="Project Preview">
+      <button class="lb-close" id="lbClose" aria-label="Close preview">&#x2715;</button>
+      <div class="lb-card" id="lbCard">
+        <div class="lb-img-wrap">
+          <img src="" alt="" id="lbImg" class="lb-img" />
+        </div>
+        <div class="lb-info">
+          <span class="lb-tag" id="lbTag"></span>
+          <h2 class="lb-title" id="lbTitle"></h2>
+          <p class="lb-desc" id="lbDesc"></p>
+          <a href="#" id="lbLink" target="_blank" class="lb-cta">View Project ↗</a>
+        </div>
       </div>
+    </div>
+
+
+    <!-- PAGE LOADER -->
+    <div class="intro" id="pageLoader">
+      <div class="loader-inner">
+
+        <!-- Animated initials -->
+        <div class="loader-initials">
+          <span class="li-char" style="--i:0">J</span>
+          <span class="li-dot">·</span>
+          <span class="li-char" style="--i:1">G</span>
+          <span class="li-dot">·</span>
+          <span class="li-char" style="--i:2">J</span>
+        </div>
+
+        <!-- Progress bar -->
+        <div class="loader-bar-wrap">
+          <div class="loader-bar" id="loaderBar"></div>
+        </div>
+
+        <!-- Role typewriter -->
+        <p class="loader-role" id="loaderRole"></p>
+
+      </div>
+
+      <!-- Corner design marks -->
+      <span class="loader-corner tl"></span>
+      <span class="loader-corner tr"></span>
+      <span class="loader-corner bl"></span>
+      <span class="loader-corner br"></span>
     </div>
 
     <!-- DESKTOP NAVIGATION -->
@@ -82,11 +117,58 @@
 
     <!-- HERO / PROFILE SECTION -->
     <section id="profile">
+
+      <!-- Animated UI/UX Background Elements -->
+      <div class="hero-bg-anim" aria-hidden="true">
+        <!-- Floating UI Cards -->
+        <div class="ui-card ui-card-1">
+          <div class="ui-card-bar"></div>
+          <div class="ui-card-line"></div>
+          <div class="ui-card-line short"></div>
+          <div class="ui-card-dots">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+        <div class="ui-card ui-card-2">
+          <div class="ui-card-circle"></div>
+          <div class="ui-card-line"></div>
+          <div class="ui-card-line short"></div>
+        </div>
+        <div class="ui-card ui-card-3">
+          <div class="ui-card-bar accent"></div>
+          <div class="ui-card-row">
+            <div class="ui-card-thumb"></div>
+            <div>
+              <div class="ui-card-line"></div>
+              <div class="ui-card-line short"></div>
+            </div>
+          </div>
+        </div>
+        <!-- Phone wireframe -->
+        <div class="ui-phone">
+          <div class="ui-phone-notch"></div>
+          <div class="ui-phone-line"></div>
+          <div class="ui-phone-line short"></div>
+          <div class="ui-phone-btn"></div>
+          <div class="ui-phone-btn"></div>
+        </div>
+        <!-- Grid dots -->
+        <div class="ui-dots-grid"></div>
+        <!-- Cursor icon -->
+        <div class="ui-cursor">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 2L20 12L12 13.5L9 20L4 2Z" fill="rgba(167,139,250,0.6)" stroke="rgba(167,139,250,0.9)" stroke-width="1"/>
+          </svg>
+        </div>
+        <!-- Colour picker circle -->
+        <div class="ui-color-ring"></div>
+      </div>
+
       <div class="hero-content">
         <div class="hero-tag">✦ Available for freelance</div>
         <h1 class="hero-name">
-          <span class="hero-name-line">Jestin G</span>
-          <span class="hero-name-line italic">Johnson</span>
+          <span class="hero-name-line uppercase">JESTIN G</span>
+          <span class="hero-name-line uppercase">JOHNSON</span>
         </h1>
         <p class="hero-role">UI/UX Designer</p>
         <p class="hero-bio">
@@ -543,6 +625,61 @@
   </div>
 
   <div class="work-list" id="workGrid">
+    <!-- Behance Poster Projects -->
+    <a
+      href="https://www.behance.net/gallery/253228285/Burger-Perfection-"
+      target="_blank"
+      class="work-item"
+      data-cat="product-design"
+    >
+      <div class="work">
+        <img src="./Assets/burger.jpg" alt="Burger Perfection Poster" />
+        <div class="layer">
+          <div class="layer-tag">Product Poster / Food Design</div>
+          <h3>Burger Perfection</h3>
+          <p>
+            A bold and vibrant food poster concept celebrating the art of the perfect burger — rich textures, dynamic composition, and mouth-watering visual storytelling.
+          </p>
+        </div>
+      </div>
+    </a>
+
+    <a
+      href="https://www.behance.net/gallery/253241581/Crocs-Poster-Release"
+      target="_blank"
+      class="work-item"
+      data-cat="product-design"
+    >
+      <div class="work">
+        <img src="./Assets/crocs.jpg" alt="Crocs Poster Release" />
+        <div class="layer">
+          <div class="layer-tag">Product Poster / Brand Design</div>
+          <h3>Crocs Poster Release</h3>
+          <p>
+            A modern, trend-forward product release poster for Crocs — blending streetwear aesthetics with clean brand typography and high-impact visual energy.
+          </p>
+        </div>
+      </div>
+    </a>
+
+    <a
+      href="#"
+      target="_blank"
+      class="work-item"
+      data-cat="product-design"
+    >
+      <div class="work">
+        <img src="./Assets/kalavara.jpg" alt="Ruchiyude Kalvara — Kerala Restaurant Menu" />
+        <div class="layer">
+          <div class="layer-tag">Graphic Design / Menu Design</div>
+          <h3>Ruchiyude Kalvara</h3>
+          <p>
+            A traditional Kerala restaurant menu design blending authentic typography, rich food photography, and warm earthy aesthetics for a warm, local dining identity.
+          </p>
+        </div>
+      </div>
+    </a>
+
     <!-- Web UI Projects -->
     <a
       href="https://github.com/heyjesty/Wedding-Port"
@@ -781,7 +918,82 @@
     </a>
   </div>
 </section>
-```
+
+
+    <!-- DESIGN PROCESS SECTION -->
+    <section id="process" class="process-section animate-section">
+      <div class="about-label">How I Work</div>
+      <h2 class="section-title">My Design Process</h2>
+      <p class="process-subtitle">
+        Every great product starts with a clear process. Here's how I turn ideas into meaningful experiences.
+      </p>
+
+      <div class="process-steps">
+
+        <div class="process-step">
+          <div class="step-number">01</div>
+          <div class="step-icon">🔍</div>
+          <h3 class="step-title">Research & Discovery</h3>
+          <p class="step-desc">
+            I start by deeply understanding the problem — user interviews, competitor analysis, and defining the core goals before touching any tools.
+          </p>
+          <div class="step-tags">
+            <span>User Research</span>
+            <span>Personas</span>
+            <span>Competitive Analysis</span>
+          </div>
+        </div>
+
+        <div class="process-connector" aria-hidden="true"></div>
+
+        <div class="process-step">
+          <div class="step-number">02</div>
+          <div class="step-icon">✏️</div>
+          <h3 class="step-title">Wireframe & Structure</h3>
+          <p class="step-desc">
+            Low-fidelity sketches and wireframes map out the information architecture and user flows before any visual design begins.
+          </p>
+          <div class="step-tags">
+            <span>Wireframes</span>
+            <span>User Flows</span>
+            <span>IA Mapping</span>
+          </div>
+        </div>
+
+        <div class="process-connector" aria-hidden="true"></div>
+
+        <div class="process-step">
+          <div class="step-number">03</div>
+          <div class="step-icon">🎨</div>
+          <h3 class="step-title">Design & Prototype</h3>
+          <p class="step-desc">
+            High-fidelity mockups built in Figma with consistent design systems, real interactions, and pixel-perfect visual execution.
+          </p>
+          <div class="step-tags">
+            <span>Figma</span>
+            <span>UI Design</span>
+            <span>Prototyping</span>
+          </div>
+        </div>
+
+        <div class="process-connector" aria-hidden="true"></div>
+
+        <div class="process-step">
+          <div class="step-number">04</div>
+          <div class="step-icon">🚀</div>
+          <h3 class="step-title">Test & Deliver</h3>
+          <p class="step-desc">
+            Usability testing, iteration based on real feedback, and clean handoff to developers with full specs and assets.
+          </p>
+          <div class="step-tags">
+            <span>Usability Testing</span>
+            <span>Iteration</span>
+            <span>Dev Handoff</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
 
 
     <!-- CONTACT SECTION -->

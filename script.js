@@ -3,43 +3,83 @@
    Graphic Designer Edition
    ============================================= */
 
-// ─── INTRO ANIMATION ───────────────────────────────────────────
-(function runIntro() {
-    const intro = document.querySelector('.intro');
-    const logoSpans = document.querySelectorAll('.intro-logo');
-    const introSub = document.querySelector('.intro-subtitle');
+// ─── PREMIUM PAGE LOADER ────────────────────────────────────────
+(function runLoader() {
+    const loader  = document.getElementById('pageLoader');
+    const bar     = document.getElementById('loaderBar');
+    const roleEl  = document.getElementById('loaderRole');
+    const chars   = document.querySelectorAll('.li-char');
 
-    if (!intro) return;
+    if (!loader) return;
+
+    // Prevent scroll while loading
+    document.body.style.overflow = 'hidden';
+
+    // Typewriter phrases
+    const phrases = ['UI / UX Designer', 'Visual Thinker', 'Interface Architect'];
+    let phraseIdx = 0, charIdx = 0, typing = true;
+
+    function typeWriter() {
+        if (!roleEl) return;
+        const phrase = phrases[phraseIdx];
+        if (typing) {
+            roleEl.innerHTML = phrase.slice(0, ++charIdx) +
+                '<span class="cursor-blink"></span>';
+            if (charIdx < phrase.length) {
+                setTimeout(typeWriter, 65);
+            } else {
+                setTimeout(() => { typing = false; typeWriter(); }, 900);
+            }
+        } else {
+            roleEl.innerHTML = phrase.slice(0, --charIdx) +
+                '<span class="cursor-blink"></span>';
+            if (charIdx > 0) {
+                setTimeout(typeWriter, 35);
+            } else {
+                phraseIdx = (phraseIdx + 1) % phrases.length;
+                typing = true;
+                setTimeout(typeWriter, 300);
+            }
+        }
+    }
+
+    // Animated progress bar
+    let progress = 0;
+    const target = 100;
+    function animateBar() {
+        if (progress >= target) return;
+        // Ease-out: fast then slow
+        const remaining = target - progress;
+        progress += Math.max(0.4, remaining * 0.045);
+        if (bar) bar.style.width = Math.min(progress, 100) + '%';
+        requestAnimationFrame(animateBar);
+    }
+
+    // Fill initials with gradient sequentially
+    function fillChars() {
+        chars.forEach((c, i) => {
+            setTimeout(() => c.classList.add('filled'), 400 + i * 200);
+        });
+    }
 
     window.addEventListener('DOMContentLoaded', () => {
-        // Animate letters in
-        logoSpans.forEach((span, idx) => {
-            setTimeout(() => {
-                span.classList.add('active');
-            }, 150 + idx * 120);
-        });
+        // Start typewriter after a short delay
+        setTimeout(typeWriter, 700);
 
-        // Show subtitle
-        setTimeout(() => {
-            if (introSub) introSub.classList.add('show');
-        }, 900);
+        // Start progress bar
+        setTimeout(animateBar, 300);
 
-        // Fade letters out
-        setTimeout(() => {
-            logoSpans.forEach((span, idx) => {
-                setTimeout(() => {
-                    span.classList.remove('active');
-                    span.classList.add('fade');
-                }, idx * 50);
-            });
-        }, 2000);
+        // Fill initials
+        fillChars();
 
-        // Slide intro away
+        // Exit loader after 2.6s
         setTimeout(() => {
-            intro.classList.add('intro-exit');
-        }, 2400);
+            loader.classList.add('intro-exit');
+            document.body.style.overflow = '';
+        }, 2600);
     });
 })();
+
 
 
 // ─── SCROLL TO TOP ON RELOAD ──────────────────────────────────
@@ -227,3 +267,74 @@ navStyle.textContent = `
     }
 `;
 document.head.appendChild(navStyle);
+
+
+// ─── LIGHTBOX / PROJECT PREVIEW ──────────────────────────────
+(function initLightbox() {
+    const overlay  = document.getElementById('lbOverlay');
+    const closeBtn = document.getElementById('lbClose');
+    const lbImg    = document.getElementById('lbImg');
+    const lbTag    = document.getElementById('lbTag');
+    const lbTitle  = document.getElementById('lbTitle');
+    const lbDesc   = document.getElementById('lbDesc');
+    const lbLink   = document.getElementById('lbLink');
+    const lbCard   = document.getElementById('lbCard');
+
+    if (!overlay) return;
+
+    // ── Open lightbox ──────────────────────────
+    function openLightbox(imgSrc, tag, title, desc, href) {
+        lbImg.src    = imgSrc;
+        lbImg.alt    = title;
+        lbTag.textContent   = tag;
+        lbTitle.textContent = title;
+        lbDesc.textContent  = desc;
+        lbLink.href  = href && href !== '#' ? href : null;
+        lbLink.style.display = (href && href !== '#') ? 'inline-flex' : 'none';
+
+        overlay.classList.add('lb-active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    // ── Close lightbox ─────────────────────────
+    function closeLightbox() {
+        overlay.classList.remove('lb-active');
+        document.body.style.overflow = '';
+        // Clear src after transition to avoid flash
+        setTimeout(() => { lbImg.src = ''; }, 400);
+    }
+
+    // ── Wire up each work card ─────────────────
+    document.querySelectorAll('.work-item').forEach(item => {
+        item.addEventListener('click', function (e) {
+            e.preventDefault();          // stop link navigation
+
+            const workDiv = this.querySelector('.work');
+            const img     = this.querySelector('.work img');
+            const tagEl   = this.querySelector('.layer-tag');
+            const titleEl = this.querySelector('.layer h3');
+            const descEl  = this.querySelector('.layer p');
+
+            const imgSrc = img    ? img.src            : '';
+            const tag    = tagEl  ? tagEl.textContent   : '';
+            const title  = titleEl? titleEl.textContent : '';
+            const desc   = descEl ? descEl.textContent.trim() : '';
+            const href   = this.getAttribute('href') || '#';
+
+            openLightbox(imgSrc, tag, title, desc, href);
+        });
+    });
+
+    // ── Close on backdrop click ────────────────
+    overlay.addEventListener('click', function (e) {
+        if (e.target === overlay) closeLightbox();
+    });
+
+    // ── Close button ───────────────────────────
+    closeBtn.addEventListener('click', closeLightbox);
+
+    // ── Escape key ────────────────────────────
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeLightbox();
+    });
+})();
