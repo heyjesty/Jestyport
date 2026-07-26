@@ -224,17 +224,23 @@
     }
 
     .contact-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 0.75rem;
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+        max-width: 440px;
+        margin: 0 auto;
     }
 
     .contact-card {
-        padding: 1.4rem 0.6rem !important;
+        padding: 1.2rem 1.4rem !important;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .contact-card a {
-        font-size: clamp(0.68rem, 2.5vw, 0.78rem) !important;
+        font-size: 0.84rem !important;
         white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
     }
 
     .footer-inner {
