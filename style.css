@@ -3,7 +3,7 @@
     Graphic Designer Edition — Gradient Refresh
     ============================================= */
 
-    @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Syne:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;500;600;700;800&display=swap');
 
     /* -------------- CSS TOKENS -------------- */
     :root {
@@ -38,8 +38,8 @@
         --border-card: rgba(167, 139, 250, 0.18);
 
         /* Typography */
-        --font-display: 'Syne', 'Space Grotesk', system-ui, sans-serif;
-        --font-body: 'Space Grotesk', system-ui, sans-serif;
+        --font-display: 'Inter', system-ui, sans-serif;
+        --font-body: 'Inter', system-ui, sans-serif;
         --font-hero: 'Space Mono', 'Courier New', monospace;
 
         /* Spacing */
