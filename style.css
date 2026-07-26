@@ -2179,7 +2179,7 @@
         background: rgba(255,255,255,0.05);
         border: 1px solid rgba(255,255,255,0.08);
         border-radius: 8px;
-        margin-bottom: 0.8rem;
+        margin: 0 auto 0.8rem;
     }
 
     .step-icon {
@@ -2294,6 +2294,10 @@
         background: #111 !important;
         border: 1px solid rgba(255,255,255,0.07) !important;
         transition: border-color 0.3s ease, transform 0.3s ease !important;
+        text-align: center !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
     }
 
     .contact-card:hover {
