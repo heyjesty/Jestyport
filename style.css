@@ -1923,7 +1923,7 @@
         to { opacity: 1; }
     }
 
-    /* ---------- PREMIUM TOOL CARDS ---------- */
+    /* ---------- PREMIUM TOOL CARDS — COLORFUL ---------- */
     .tool-cards {
         position: absolute;
         inset: 0;
@@ -1939,38 +1939,91 @@
         align-items: center;
         gap: 0.6rem;
         padding: 1.2rem 1.4rem;
-        background: rgba(255,255,255,0.03);
-        border: 1px solid rgba(255,255,255,0.08);
-        border-radius: 14px;
-        backdrop-filter: blur(8px);
-        transition: transform 0.3s var(--ease), border-color 0.3s ease;
+        border-radius: 16px;
+        backdrop-filter: blur(12px);
+        transition: transform 0.3s var(--ease), box-shadow 0.3s ease;
         animation: toolFloat var(--float-dur, 7s) ease-in-out var(--delay, 0s) infinite;
+        /* Animated gradient border */
+        background: var(--tc-bg, rgba(255,255,255,0.04));
+        border: 1px solid var(--tc-border, rgba(255,255,255,0.1));
+        box-shadow: 0 0 20px var(--tc-glow, transparent), inset 0 1px 0 rgba(255,255,255,0.06);
     }
 
-    .tool-card:nth-child(1) { top: 12%; right: 6%;  }
-    .tool-card:nth-child(2) { top: 32%; right: 2%;  }
-    .tool-card:nth-child(3) { top: 55%; right: 8%;  }
-    .tool-card:nth-child(4) { bottom: 22%; right: 4%; }
-    .tool-card:nth-child(5) { top: 18%; right: 22%; }
-    .tool-card:nth-child(6) { bottom: 30%; right: 20%; }
+    /* Per-card brand colors */
+    /* 1. Figma */
+    .tool-card:nth-child(1) {
+        top: 11%; right: 6%;
+        --tc-bg:     rgba(162,89,255,0.08);
+        --tc-border: rgba(162,89,255,0.35);
+        --tc-glow:   rgba(162,89,255,0.18);
+        --tc-icon:   #a259ff;
+        --tc-text:   rgba(162,89,255,0.8);
+    }
+    /* 2. Photoshop */
+    .tool-card:nth-child(2) {
+        top: 31%; right: 2%;
+        --tc-bg:     rgba(49,168,255,0.08);
+        --tc-border: rgba(49,168,255,0.35);
+        --tc-glow:   rgba(49,168,255,0.15);
+        --tc-icon:   #31a8ff;
+        --tc-text:   rgba(49,168,255,0.8);
+    }
+    /* 3. Illustrator */
+    .tool-card:nth-child(3) {
+        top: 54%; right: 8%;
+        --tc-bg:     rgba(255,154,0,0.08);
+        --tc-border: rgba(255,154,0,0.35);
+        --tc-glow:   rgba(255,154,0,0.15);
+        --tc-icon:   #ff9a00;
+        --tc-text:   rgba(255,154,0,0.8);
+    }
+    /* 4. Framer */
+    .tool-card:nth-child(4) {
+        bottom: 22%; right: 4%;
+        --tc-bg:     rgba(0,170,255,0.08);
+        --tc-border: rgba(0,170,255,0.35);
+        --tc-glow:   rgba(0,170,255,0.15);
+        --tc-icon:   #00aaff;
+        --tc-text:   rgba(0,170,255,0.8);
+    }
+    /* 5. Adobe XD */
+    .tool-card:nth-child(5) {
+        top: 17%; right: 22%;
+        --tc-bg:     rgba(255,61,154,0.08);
+        --tc-border: rgba(255,61,154,0.35);
+        --tc-glow:   rgba(255,61,154,0.15);
+        --tc-icon:   #ff3d9a;
+        --tc-text:   rgba(255,61,154,0.8);
+    }
+    /* 6. Miro */
+    .tool-card:nth-child(6) {
+        bottom: 30%; right: 20%;
+        --tc-bg:     rgba(255,199,0,0.08);
+        --tc-border: rgba(255,199,0,0.3);
+        --tc-glow:   rgba(255,199,0,0.12);
+        --tc-icon:   #ffc700;
+        --tc-text:   rgba(255,199,0,0.8);
+    }
 
     .tool-card:nth-child(even) {
         animation-direction: alternate-reverse;
     }
 
     .tool-icon {
-        width: 26px;
-        height: 26px;
-        color: rgba(255,255,255,0.55);
+        width: 28px;
+        height: 28px;
+        color: var(--tc-icon, rgba(255,255,255,0.6));
+        filter: drop-shadow(0 0 6px var(--tc-glow, transparent));
     }
 
     .tool-card span {
         font-family: var(--font-body);
         font-size: 0.68rem;
-        font-weight: 500;
-        letter-spacing: 0.05em;
-        color: rgba(255,255,255,0.4);
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        color: var(--tc-text, rgba(255,255,255,0.5));
         white-space: nowrap;
+        text-transform: uppercase;
     }
 
     @keyframes toolFloat {
@@ -2039,11 +2092,39 @@
         transform: translateY(-1px);
     }
 
-    /* ---------- LUCIDE ICON SIZING ---------- */
-    .contact-icon svg,
-    .step-icon svg,
-    .about-card-icon svg,
-    .category-icon svg {
+    /* ---------- SOCIAL LINK ICONS ---------- */
+    #socials-container {
+        display: flex;
+        gap: 0.8rem;
+        margin-top: 1.2rem;
+    }
+
+    .social-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        border: 1px solid rgba(255,255,255,0.12);
+        background: rgba(255,255,255,0.04);
+        color: rgba(255,255,255,0.55);
+        transition: all 0.3s var(--ease);
+        text-decoration: none;
+    }
+
+    .social-link svg {
+        width: 18px;
+        height: 18px;
+        stroke-width: 1.75;
+    }
+
+    .social-link:hover {
+        border-color: rgba(255,255,255,0.35);
+        background: rgba(255,255,255,0.08);
+        color: #FFFFFF;
+        transform: translateY(-2px);
+    }
         width: 22px;
         height: 22px;
         stroke-width: 1.5;
