@@ -2159,21 +2159,26 @@
         color: #FFFFFF;
         transform: translateY(-2px);
     }
-        width: 22px;
-        height: 22px;
+
+    .contact-icon svg,
+    .step-icon svg,
+    .about-card-icon svg,
+    .category-icon svg {
+        width: 16px;
+        height: 16px;
         stroke-width: 1.5;
         color: rgba(255,255,255,0.6);
     }
 
     .contact-icon {
-        width: 40px;
-        height: 40px;
+        width: 32px;
+        height: 32px;
         display: flex;
         align-items: center;
         justify-content: center;
         background: rgba(255,255,255,0.05);
         border: 1px solid rgba(255,255,255,0.08);
-        border-radius: 10px;
+        border-radius: 8px;
         margin-bottom: 0.8rem;
     }
 
