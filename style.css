@@ -1588,6 +1588,16 @@
     #process {
         background: var(--bg-surface);
         border-top: 1px solid var(--border-subtle);
+        text-align: center;
+    }
+
+    .process-subtitle {
+        max-width: 580px;
+        margin: 0.6rem auto 3rem;
+        font-size: 0.95rem;
+        color: var(--text-secondary, rgba(255,255,255,0.6));
+        text-align: center;
+        line-height: 1.75;
     }
 
     .process-steps {
@@ -1915,17 +1925,17 @@
         font-weight: 500;
         letter-spacing: 0.35em;
         text-transform: uppercase;
-        color: rgba(255,255,255,0.4);
+        color: rgba(255,255,255,0.45);
         opacity: 0;
         animation: sigSubIn 0.6s ease 0.1s forwards;
-        margin-bottom: -1rem;
+        margin-bottom: 0.6rem;
     }
 
     @keyframes sigSubIn {
         to { opacity: 1; }
     }
 
-    /* ---------- MINIMAL ANIMATED TOOL ICONS (NO BOX) ---------- */
+    /* ---------- MINIMAL ELEGANT FLOATING TOOL ICONS ---------- */
     .tool-cards {
         position: absolute;
         inset: 0;
@@ -1939,50 +1949,66 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: transparent !important;
-        border: none !important;
-        box-shadow: none !important;
-        backdrop-filter: none !important;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: var(--tc-bg, rgba(255,255,255,0.03)) !important;
+        border: 1px solid var(--tc-border, rgba(255,255,255,0.1)) !important;
+        box-shadow: 0 0 25px var(--tc-glow, transparent), inset 0 1px 0 rgba(255,255,255,0.12) !important;
+        backdrop-filter: blur(10px) !important;
         padding: 0 !important;
-        animation: toolFloat var(--float-dur, 7s) ease-in-out var(--delay, 0s) infinite;
+        animation: toolOrbFloat var(--float-dur, 7s) ease-in-out var(--delay, 0s) infinite;
+        transition: transform 0.4s var(--ease-spring), box-shadow 0.4s ease;
     }
 
-    /* Per-icon brand colors & positions */
-    /* 1. Figma */
+    /* Spread across left & right sides of homepage */
+    /* 1. Figma — Top Left */
     .tool-card:nth-child(1) {
-        top: 11%; right: 6%;
-        --tc-icon: #a259ff;
-        --tc-glow: rgba(162,89,255,0.4);
+        top: 14%; left: 7%;
+        --tc-bg:     rgba(162,89,255,0.08);
+        --tc-border: rgba(162,89,255,0.3);
+        --tc-icon:   #a259ff;
+        --tc-glow:   rgba(162,89,255,0.35);
     }
-    /* 2. Photoshop */
+    /* 2. Photoshop — Top Right */
     .tool-card:nth-child(2) {
-        top: 31%; right: 2%;
-        --tc-icon: #31a8ff;
-        --tc-glow: rgba(49,168,255,0.4);
+        top: 16%; right: 8%;
+        --tc-bg:     rgba(49,168,255,0.08);
+        --tc-border: rgba(49,168,255,0.3);
+        --tc-icon:   #31a8ff;
+        --tc-glow:   rgba(49,168,255,0.35);
     }
-    /* 3. Illustrator */
+    /* 3. Illustrator — Mid Left */
     .tool-card:nth-child(3) {
-        top: 54%; right: 8%;
-        --tc-icon: #ff9a00;
-        --tc-glow: rgba(255,154,0,0.4);
+        top: 48%; left: 4%;
+        --tc-bg:     rgba(255,154,0,0.08);
+        --tc-border: rgba(255,154,0,0.3);
+        --tc-icon:   #ff9a00;
+        --tc-glow:   rgba(255,154,0,0.35);
     }
-    /* 4. Framer */
+    /* 4. Framer — Mid Right */
     .tool-card:nth-child(4) {
-        bottom: 22%; right: 4%;
-        --tc-icon: #00aaff;
-        --tc-glow: rgba(0,170,255,0.4);
+        top: 52%; right: 5%;
+        --tc-bg:     rgba(0,170,255,0.08);
+        --tc-border: rgba(0,170,255,0.3);
+        --tc-icon:   #00aaff;
+        --tc-glow:   rgba(0,170,255,0.35);
     }
-    /* 5. Adobe XD */
+    /* 5. Adobe XD — Bottom Left */
     .tool-card:nth-child(5) {
-        top: 17%; right: 22%;
-        --tc-icon: #ff3d9a;
-        --tc-glow: rgba(255,61,154,0.4);
+        bottom: 14%; left: 11%;
+        --tc-bg:     rgba(255,61,154,0.08);
+        --tc-border: rgba(255,61,154,0.3);
+        --tc-icon:   #ff3d9a;
+        --tc-glow:   rgba(255,61,154,0.35);
     }
-    /* 6. Miro */
+    /* 6. Miro — Bottom Right */
     .tool-card:nth-child(6) {
-        bottom: 30%; right: 20%;
-        --tc-icon: #ffc700;
-        --tc-glow: rgba(255,199,0,0.4);
+        bottom: 16%; right: 12%;
+        --tc-bg:     rgba(255,199,0,0.08);
+        --tc-border: rgba(255,199,0,0.3);
+        --tc-icon:   #ffc700;
+        --tc-glow:   rgba(255,199,0,0.35);
     }
 
     .tool-card:nth-child(even) {
@@ -1990,16 +2016,17 @@
     }
 
     .tool-icon {
-        width: 36px;
-        height: 36px;
-        color: var(--tc-icon, rgba(255,255,255,0.7));
-        filter: drop-shadow(0 0 10px var(--tc-glow, transparent));
-        transition: transform 0.3s ease, filter 0.3s ease;
+        width: 22px;
+        height: 22px;
+        color: var(--tc-icon, rgba(255,255,255,0.85));
+        filter: drop-shadow(0 0 6px var(--tc-glow, transparent));
+        transition: transform 0.3s ease;
     }
 
-    @keyframes toolFloat {
-        0%, 100% { transform: translateY(0px) rotate(-0.5deg); }
-        50%       { transform: translateY(-16px) rotate(0.5deg); }
+    @keyframes toolOrbFloat {
+        0%, 100% { transform: translateY(0px) translateX(0px) rotate(-3deg); }
+        33%       { transform: translateY(-12px) translateX(4px) rotate(2deg); }
+        66%       { transform: translateY(8px) translateX(-4px) rotate(-1deg); }
     }
 
     /* ---------- PREMIUM BUTTONS ---------- */
