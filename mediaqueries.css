@@ -253,10 +253,28 @@
         padding: 1.2rem;
     }
 
-    /* Hide background floating tool cards on phone screens so layout stays ultra-clean */
+    /* Floating Animated Tool Orbs on Mobile Screens */
     .tool-cards {
-        display: none;
+        display: block !important;
+        opacity: 0.85;
     }
+
+    .tool-card {
+        width: 34px !important;
+        height: 34px !important;
+    }
+
+    .tool-icon {
+        width: 18px !important;
+        height: 18px !important;
+    }
+
+    .tool-card:nth-child(1) { top: 3%; left: 4%; right: auto; bottom: auto; }
+    .tool-card:nth-child(2) { top: 3%; right: 4%; left: auto; bottom: auto; }
+    .tool-card:nth-child(3) { top: 36%; left: 3%; right: auto; bottom: auto; }
+    .tool-card:nth-child(4) { top: 36%; right: 3%; left: auto; bottom: auto; }
+    .tool-card:nth-child(5) { bottom: 3%; left: 5%; top: auto; right: auto; }
+    .tool-card:nth-child(6) { bottom: 3%; right: 5%; top: auto; left: auto; }
 
     /* Lightbox Modal on Phones */
     .lb-card {
