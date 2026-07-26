@@ -62,12 +62,10 @@
 
     <!-- DESKTOP NAVIGATION -->
     <nav id="desktop-nav">
-      <div class="logo">
-        <img
-          src="./Assets/logo.jpg"
-          alt="JGJ Logo"
-          onclick="location.href = './#profile'"
-        />
+      <div class="logo" onclick="location.href='./#profile'">
+        <svg class="nav-sig" viewBox="0 0 260 60" xmlns="http://www.w3.org/2000/svg" aria-label="Jestin">
+          <text class="nav-sig-text" x="50%" y="72%" text-anchor="middle" dominant-baseline="middle">Jestin</text>
+        </svg>
       </div>
       <div>
         <ul class="nav-links">
@@ -83,7 +81,7 @@
 
     <!-- MOBILE NAVIGATION -->
     <nav id="hamburger-nav">
-      <div class="logo">Jestin</div>
+      <div class="logo nav-sig-mobile" onclick="location.href='./#profile'">Jestin</div>
       <div class="hamburger-menu">
         <div class="hamburger-icon" onclick="togglemenu()">
           <span></span>

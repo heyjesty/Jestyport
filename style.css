@@ -2092,6 +2092,40 @@
         transform: translateY(-1px);
     }
 
+    /* ---------- NAVBAR SIGNATURE LOGO ---------- */
+    .logo {
+        cursor: pointer;
+    }
+
+    .nav-sig {
+        width: 120px;
+        height: 40px;
+        display: block;
+        overflow: visible;
+    }
+
+    .nav-sig-text {
+        font-family: var(--font-sig);
+        font-size: 38px;
+        fill: rgba(255,255,255,0.9);
+        stroke: none;
+        filter: drop-shadow(0 0 8px rgba(255,255,255,0.12));
+        transition: fill 0.3s ease, filter 0.3s ease;
+    }
+
+    .logo:hover .nav-sig-text {
+        fill: #FFFFFF;
+        filter: drop-shadow(0 0 14px rgba(255,255,255,0.25));
+    }
+
+    .nav-sig-mobile {
+        font-family: var(--font-sig) !important;
+        font-size: 1.6rem !important;
+        color: rgba(255,255,255,0.9) !important;
+        cursor: pointer;
+        letter-spacing: 0.01em;
+    }
+
     /* ---------- SOCIAL LINK ICONS ---------- */
     #socials-container {
         display: flex;
