@@ -1,53 +1,62 @@
     /* =============================================
     DESIGN SYSTEM: JESTIN G JOHNSON PORTFOLIO
-    Graphic Designer Edition — Gradient Refresh
+    Premium Minimal Edition — Award Level
     ============================================= */
 
-    @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;500;600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+    /* Brittany Signature — local */
+    @font-face {
+        font-family: 'Brittany';
+        src: url('./Assets/BrittanySignature.ttf') format('truetype');
+        font-weight: normal;
+        font-display: block;
+    }
 
     /* -------------- CSS TOKENS -------------- */
     :root {
-        /* Gradient Palette */
-        --bg-base: #0a0812;
-        --bg-dark: #080610;
-        --bg-surface: #0f0d1a;
-        --bg-card: #151225;
-        --bg-card-hover: #1c1830;
+        /* Premium Dark Palette */
+        --bg-base:      #0A0A0A;
+        --bg-dark:      #0A0A0A;
+        --bg-surface:   #111111;
+        --bg-card:      #111111;
+        --bg-card-hover:#161616;
 
-        /* Gradient stops */
-        --grad-1: #0a0812;
-        --grad-2: #0d0b1f;
-        --grad-3: #10102a;
-        --grad-4: #0c1422;
+        /* Neutrals */
+        --text-primary:   #FFFFFF;
+        --text-secondary: #A0A0A0;
+        --text-muted:     #555555;
+        --accent:         #EAEAEA;
+        --accent-warm:    #FFFFFF;
 
-        --accent: #a78bfa;
-        /* soft violet */
-        --accent-2: #38bdf8;
-        /* sky cyan */
-        --accent-3: #f472b6;
-        /* rose pink */
-        --accent-light: #c4b5fd;
-        --accent-dim: rgba(167, 139, 250, 0.15);
-        --accent-border: rgba(167, 139, 250, 0.35);
+        /* Borders */
+        --border-subtle:  rgba(255,255,255,0.06);
+        --border-card:    rgba(255,255,255,0.08);
+        --border-hover:   rgba(255,255,255,0.18);
 
-        --cream: #f0eeff;
-        --cream-muted: #a9a4c4;
-        --cream-faint: #6b6585;
-
-        --border-subtle: rgba(167, 139, 250, 0.08);
-        --border-card: rgba(167, 139, 250, 0.18);
+        /* Legacy aliases — keep for existing rules */
+        --cream:          #FFFFFF;
+        --cream-muted:    #A0A0A0;
+        --cream-faint:    #555555;
+        --accent-dim:     rgba(255,255,255,0.05);
+        --accent-border:  rgba(255,255,255,0.12);
+        --accent-light:   #EAEAEA;
+        --accent-2:       #EAEAEA;
+        --accent-3:       #EAEAEA;
 
         /* Typography */
-        --font-display: 'Inter', system-ui, sans-serif;
-        --font-body: 'Inter', system-ui, sans-serif;
-        --font-hero: 'Space Mono', 'Courier New', monospace;
+        --font-display: 'Geist', 'Inter', system-ui, sans-serif;
+        --font-body:    'Inter', system-ui, sans-serif;
+        --font-hero:    'Space Mono', 'Courier New', monospace;
+        --font-sig:     'Brittany', cursive;
 
         /* Spacing */
-        --section-pad: 6rem 5%;
+        --section-pad: 7rem 6%;
         --max-width: 1280px;
 
         /* Transitions */
         --ease: cubic-bezier(0.4, 0, 0.2, 1);
+        --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     /* -------------- RESET -------------- */
@@ -66,73 +75,27 @@
 
     body {
         font-family: var(--font-body);
-        background-color: var(--bg-base);
-        background-image:
-            radial-gradient(ellipse 80% 60% at 20% 10%, rgba(99, 60, 180, 0.35) 0%, transparent 55%),
-            radial-gradient(ellipse 70% 60% at 80% 80%, rgba(30, 120, 180, 0.28) 0%, transparent 55%),
-            radial-gradient(ellipse 50% 50% at 60% 30%, rgba(180, 60, 140, 0.18) 0%, transparent 50%),
-            linear-gradient(135deg, #0a0812 0%, #0d0b1f 30%, #10102a 60%, #0c1422 100%);
-        background-attachment: fixed;
-        background-size: cover;
-        animation: bgShift 18s ease-in-out infinite alternate;
-        color: var(--cream);
-        line-height: 1.6;
+        background-color: #0A0A0A;
+        color: #FFFFFF;
+        line-height: 1.7;
         -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
         overflow-x: hidden;
     }
 
-    @keyframes bgShift {
-        0% {
-            background-image:
-                radial-gradient(ellipse 80% 60% at 20% 10%, rgba(99, 60, 180, 0.35) 0%, transparent 55%),
-                radial-gradient(ellipse 70% 60% at 80% 80%, rgba(30, 120, 180, 0.28) 0%, transparent 55%),
-                radial-gradient(ellipse 50% 50% at 60% 30%, rgba(180, 60, 140, 0.18) 0%, transparent 50%),
-                linear-gradient(135deg, #0a0812 0%, #0d0b1f 30%, #10102a 60%, #0c1422 100%);
-        }
-        33% {
-            background-image:
-                radial-gradient(ellipse 80% 60% at 70% 20%, rgba(56, 130, 210, 0.3) 0%, transparent 55%),
-                radial-gradient(ellipse 70% 60% at 20% 70%, rgba(120, 50, 200, 0.25) 0%, transparent 55%),
-                radial-gradient(ellipse 50% 50% at 50% 60%, rgba(200, 80, 100, 0.18) 0%, transparent 50%),
-                linear-gradient(160deg, #080610 0%, #0f0826 30%, #0d1428 60%, #100a20 100%);
-        }
-        66% {
-            background-image:
-                radial-gradient(ellipse 80% 60% at 50% 80%, rgba(80, 40, 200, 0.3) 0%, transparent 55%),
-                radial-gradient(ellipse 70% 60% at 90% 20%, rgba(20, 140, 180, 0.28) 0%, transparent 55%),
-                radial-gradient(ellipse 50% 50% at 20% 40%, rgba(160, 40, 180, 0.2) 0%, transparent 50%),
-                linear-gradient(110deg, #060810 0%, #0a0d24 30%, #0e1230 60%, #08100e 100%);
-        }
-        100% {
-            background-image:
-                radial-gradient(ellipse 80% 60% at 30% 60%, rgba(60, 80, 220, 0.32) 0%, transparent 55%),
-                radial-gradient(ellipse 70% 60% at 70% 30%, rgba(40, 150, 160, 0.26) 0%, transparent 55%),
-                radial-gradient(ellipse 50% 50% at 80% 70%, rgba(190, 50, 120, 0.18) 0%, transparent 50%),
-                linear-gradient(150deg, #090611 0%, #0c0a22 30%, #101228 60%, #080e1a 100%);
-        }
-    }
 
-    body::-webkit-scrollbar {
-        width: 4px;
-    }
-
-    body::-webkit-scrollbar-track {
-        background: var(--bg-base);
-    }
-
-    body::-webkit-scrollbar-thumb {
-        background: var(--accent);
-        border-radius: 2px;
-    }
+    body::-webkit-scrollbar { width: 3px; }
+    body::-webkit-scrollbar-track { background: #0A0A0A; }
+    body::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
 
     a {
-        color: var(--cream);
+        color: #FFFFFF;
         text-decoration: none;
         transition: color 0.3s var(--ease);
     }
 
     a:hover {
-        color: var(--accent-light);
+        color: var(--accent);
     }
 
     p {
@@ -1894,6 +1857,358 @@
         overflow: hidden;
         clip: rect(0, 0, 0, 0);
     }
+
+    /* ==============================================
+       PREMIUM ADDITIONS — AWARD LEVEL REDESIGN
+       ============================================== */
+
+    /* ---------- SIGNATURE LOADER ---------- */
+    .sig-loader {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background: #0A0A0A;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        transition: opacity 0.6s ease, transform 0.8s cubic-bezier(0.76, 0, 0.24, 1);
+    }
+
+    .sig-loader.sig-exit {
+        opacity: 0;
+        transform: translateY(-6px);
+        pointer-events: none;
+    }
+
+    .sig-svg {
+        width: min(460px, 85vw);
+        height: auto;
+        overflow: visible;
+    }
+
+    .sig-text {
+        font-family: var(--font-sig);
+        font-size: 96px;
+        fill: none;
+        stroke: #FFFFFF;
+        stroke-width: 1.2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-dasharray: 3000;
+        stroke-dashoffset: 3000;
+        filter: drop-shadow(0 0 12px rgba(255,255,255,0.15));
+        animation: sigDraw 1.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
+    }
+
+    @keyframes sigDraw {
+        0%   { stroke-dashoffset: 3000; fill: transparent; }
+        70%  { stroke-dashoffset: 0;    fill: transparent; }
+        100% { stroke-dashoffset: 0;    fill: rgba(255,255,255,0.92); stroke-width: 0.3; }
+    }
+
+    .sig-sub {
+        font-family: var(--font-body);
+        font-size: 0.7rem;
+        font-weight: 400;
+        letter-spacing: 0.35em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.3);
+        opacity: 0;
+        animation: sigSubIn 0.6s ease 1.8s forwards;
+    }
+
+    @keyframes sigSubIn {
+        to { opacity: 1; }
+    }
+
+    /* ---------- PREMIUM TOOL CARDS ---------- */
+    .tool-cards {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        overflow: hidden;
+    }
+
+    .tool-card {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 1.2rem 1.4rem;
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 14px;
+        backdrop-filter: blur(8px);
+        transition: transform 0.3s var(--ease), border-color 0.3s ease;
+        animation: toolFloat var(--float-dur, 7s) ease-in-out var(--delay, 0s) infinite;
+    }
+
+    .tool-card:nth-child(1) { top: 12%; right: 6%;  }
+    .tool-card:nth-child(2) { top: 32%; right: 2%;  }
+    .tool-card:nth-child(3) { top: 55%; right: 8%;  }
+    .tool-card:nth-child(4) { bottom: 22%; right: 4%; }
+    .tool-card:nth-child(5) { top: 18%; right: 22%; }
+    .tool-card:nth-child(6) { bottom: 30%; right: 20%; }
+
+    .tool-card:nth-child(even) {
+        animation-direction: alternate-reverse;
+    }
+
+    .tool-icon {
+        width: 26px;
+        height: 26px;
+        color: rgba(255,255,255,0.55);
+    }
+
+    .tool-card span {
+        font-family: var(--font-body);
+        font-size: 0.68rem;
+        font-weight: 500;
+        letter-spacing: 0.05em;
+        color: rgba(255,255,255,0.4);
+        white-space: nowrap;
+    }
+
+    @keyframes toolFloat {
+        0%, 100% { transform: translateY(0px) rotate(-0.5deg); }
+        50%       { transform: translateY(-16px) rotate(0.5deg); }
+    }
+
+    /* ---------- PREMIUM BUTTONS ---------- */
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.8rem 1.8rem;
+        font-family: var(--font-body);
+        font-size: 0.85rem;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        text-decoration: none;
+        border: 1px solid rgba(255,255,255,0.15);
+        background: transparent;
+        color: #FFFFFF;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn::after {
+        content: ' →';
+        display: inline-block;
+        opacity: 0;
+        transform: translateX(-6px);
+        transition: all 0.35s ease;
+    }
+
+    .btn:hover::after {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .btn-primary {
+        background: #FFFFFF;
+        color: #0A0A0A;
+        border-color: #FFFFFF;
+        font-weight: 600;
+    }
+
+    .btn-primary::after { content: ' →'; color: #0A0A0A; }
+
+    .btn-primary:hover {
+        background: rgba(255,255,255,0.88);
+        transform: translateY(-1px);
+        box-shadow: 0 8px 24px rgba(255,255,255,0.1);
+    }
+
+    .btn-outline {
+        background: transparent;
+        border: 1px solid rgba(255,255,255,0.2);
+        color: #FFFFFF;
+    }
+
+    .btn-outline:hover {
+        border-color: rgba(255,255,255,0.5);
+        background: rgba(255,255,255,0.04);
+        transform: translateY(-1px);
+    }
+
+    /* ---------- LUCIDE ICON SIZING ---------- */
+    .contact-icon svg,
+    .step-icon svg,
+    .about-card-icon svg,
+    .category-icon svg {
+        width: 22px;
+        height: 22px;
+        stroke-width: 1.5;
+        color: rgba(255,255,255,0.6);
+    }
+
+    .contact-icon {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 10px;
+        margin-bottom: 0.8rem;
+    }
+
+    .step-icon {
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 12px;
+        margin: 0 auto 1rem;
+    }
+
+    .step-icon svg { color: rgba(255,255,255,0.7); }
+
+    .about-card-icon {
+        width: 38px;
+        height: 38px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0.75rem;
+    }
+
+    .category-icon {
+        display: inline-flex;
+        align-items: center;
+        margin-right: 0.4rem;
+    }
+
+    /* ---------- SECTION HEADING REFRESH ---------- */
+    .section-title {
+        font-family: var(--font-display) !important;
+        font-weight: 600 !important;
+        letter-spacing: -0.02em !important;
+        color: #FFFFFF !important;
+    }
+
+    .about-label {
+        font-size: 0.72rem !important;
+        font-weight: 500 !important;
+        letter-spacing: 0.2em !important;
+        color: rgba(255,255,255,0.35) !important;
+        text-transform: uppercase !important;
+    }
+
+    /* ---------- SCROLL REVEAL ---------- */
+    .reveal-up {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+        transition-delay: var(--reveal-delay, 0s);
+    }
+
+    .reveal-up.revealed {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* ---------- NAVBAR SCROLL BLUR ---------- */
+    #desktop-nav.scrolled {
+        background: rgba(10,10,10,0.85) !important;
+        backdrop-filter: blur(20px) !important;
+        border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+    }
+
+    /* ---------- HERO NAME REFRESH ---------- */
+    .hero-name {
+        font-family: var(--font-hero) !important;
+        font-size: clamp(1.5rem, 3.5vw, 3rem) !important;
+        font-weight: 700 !important;
+        background: none !important;
+        -webkit-text-fill-color: #FFFFFF !important;
+        color: #FFFFFF !important;
+        letter-spacing: 0.06em !important;
+        animation: none !important;
+    }
+
+    .hero-role {
+        font-size: 0.8rem !important;
+        letter-spacing: 0.25em !important;
+        color: rgba(255,255,255,0.35) !important;
+        font-weight: 400 !important;
+    }
+
+    /* ---------- PROCESS CARD MINIMAL REFRESH ---------- */
+    .process-step {
+        background: #111 !important;
+        border: 1px solid rgba(255,255,255,0.07) !important;
+        border-radius: 12px !important;
+        transition: border-color 0.3s ease, transform 0.3s ease !important;
+    }
+
+    .process-step:hover {
+        border-color: rgba(255,255,255,0.16) !important;
+        transform: translateY(-4px) !important;
+        box-shadow: 0 12px 32px rgba(0,0,0,0.4) !important;
+    }
+
+    .step-number {
+        color: rgba(255,255,255,0.06) !important;
+    }
+
+    .step-title {
+        color: #FFFFFF !important;
+        font-family: var(--font-display) !important;
+    }
+
+    /* ---------- CONTACT CARD MINIMAL ---------- */
+    .contact-card {
+        background: #111 !important;
+        border: 1px solid rgba(255,255,255,0.07) !important;
+        transition: border-color 0.3s ease, transform 0.3s ease !important;
+    }
+
+    .contact-card:hover {
+        border-color: rgba(255,255,255,0.18) !important;
+        transform: translateY(-3px) !important;
+    }
+
+    .contact-card h3 {
+        color: #FFFFFF !important;
+        font-size: 0.9rem !important;
+        font-weight: 500 !important;
+        margin-bottom: 0.3rem !important;
+    }
+
+    .contact-card a {
+        color: rgba(255,255,255,0.4) !important;
+        font-size: 0.82rem !important;
+    }
+
+    .contact-card a:hover {
+        color: rgba(255,255,255,0.8) !important;
+    }
+
+    /* ---------- FOOTER MINIMAL ---------- */
+    footer {
+        background: #0A0A0A !important;
+        border-top: 1px solid rgba(255,255,255,0.06) !important;
+        padding: 2rem 6% !important;
+    }
+
+    .footer-copy {
+        font-size: 0.78rem !important;
+        color: rgba(255,255,255,0.25) !important;
+    }
+
 
     /* -------------- LIGHTBOX MODAL -------------- */
     .lb-overlay {

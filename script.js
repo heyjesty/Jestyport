@@ -1,85 +1,36 @@
 /* =============================================
    SCRIPT.JS — Jestin G Johnson Portfolio
-   Graphic Designer Edition
+   Premium Minimal Edition — Award Level
    ============================================= */
 
-// ─── PREMIUM PAGE LOADER ────────────────────────────────────────
-(function runLoader() {
+// ─── INIT LUCIDE ICONS ───────────────────────────────────────────
+if (typeof lucide !== 'undefined') {
+    document.addEventListener('DOMContentLoaded', () => lucide.createIcons());
+}
+
+// ─── SIGNATURE LOADER ────────────────────────────────────────────
+(function runSignatureLoader() {
     const loader  = document.getElementById('pageLoader');
-    const bar     = document.getElementById('loaderBar');
-    const roleEl  = document.getElementById('loaderRole');
-    const chars   = document.querySelectorAll('.li-char');
+    const sigText = document.getElementById('sigText');
 
     if (!loader) return;
 
-    // Prevent scroll while loading
     document.body.style.overflow = 'hidden';
 
-    // Typewriter phrases
-    const phrases = ['UI / UX Designer', 'Visual Thinker', 'Interface Architect'];
-    let phraseIdx = 0, charIdx = 0, typing = true;
-
-    function typeWriter() {
-        if (!roleEl) return;
-        const phrase = phrases[phraseIdx];
-        if (typing) {
-            roleEl.innerHTML = phrase.slice(0, ++charIdx) +
-                '<span class="cursor-blink"></span>';
-            if (charIdx < phrase.length) {
-                setTimeout(typeWriter, 65);
-            } else {
-                setTimeout(() => { typing = false; typeWriter(); }, 900);
-            }
-        } else {
-            roleEl.innerHTML = phrase.slice(0, --charIdx) +
-                '<span class="cursor-blink"></span>';
-            if (charIdx > 0) {
-                setTimeout(typeWriter, 35);
-            } else {
-                phraseIdx = (phraseIdx + 1) % phrases.length;
-                typing = true;
-                setTimeout(typeWriter, 300);
-            }
-        }
-    }
-
-    // Animated progress bar
-    let progress = 0;
-    const target = 100;
-    function animateBar() {
-        if (progress >= target) return;
-        // Ease-out: fast then slow
-        const remaining = target - progress;
-        progress += Math.max(0.4, remaining * 0.045);
-        if (bar) bar.style.width = Math.min(progress, 100) + '%';
-        requestAnimationFrame(animateBar);
-    }
-
-    // Fill initials with gradient sequentially
-    function fillChars() {
-        chars.forEach((c, i) => {
-            setTimeout(() => c.classList.add('filled'), 400 + i * 200);
-        });
-    }
-
-    window.addEventListener('DOMContentLoaded', () => {
-        // Start typewriter after a short delay
-        setTimeout(typeWriter, 700);
-
-        // Start progress bar
-        setTimeout(animateBar, 300);
-
-        // Fill initials
-        fillChars();
-
-        // Exit loader after 2.6s
+    const exitLoader = () => {
+        loader.classList.add('sig-exit');
+        document.body.style.overflow = '';
         setTimeout(() => {
-            loader.classList.add('intro-exit');
-            document.body.style.overflow = '';
-        }, 2600);
+            loader.style.display = 'none';
+        }, 900);
+    };
+
+    // Wait for fonts, then measure path length for perfect animation
+    document.addEventListener('DOMContentLoaded', () => {
+        // Trigger exit after signature animation + subtitle delay
+        setTimeout(exitLoader, 2900);
     });
 })();
-
 
 
 // ─── SCROLL TO TOP ON RELOAD ──────────────────────────────────
@@ -336,5 +287,85 @@ document.head.appendChild(navStyle);
     // ── Escape key ────────────────────────────
     document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') closeLightbox();
+    });
+})();
+
+// ─── NAVBAR BLUR ON SCROLL ───────────────────────────────────────
+(function initNavScroll() {
+    const nav = document.getElementById('desktop-nav');
+    if (!nav) return;
+
+    const handleScroll = () => {
+        if (window.scrollY > 20) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+})();
+
+// ─── SCROLL REVEAL ───────────────────────────────────────────────
+(function initScrollReveal() {
+    const targets = document.querySelectorAll([
+        '.section-title',
+        '.about-label',
+        '.about-card',
+        '.about-bio p',
+        '.process-step',
+        '.contact-card',
+        '.stat-box',
+        '.work-item',
+        '.experience-card',
+        '.skill-category-block',
+        '.marquee-strip',
+        '.hero-content',
+        '.hero-visual',
+        '.process-subtitle',
+        '.contact-subtitle',
+    ].join(','));
+
+    targets.forEach((el, i) => {
+        el.classList.add('reveal-up');
+        // Stagger sibling items
+        if (el.parentElement) {
+            const siblings = el.parentElement.querySelectorAll(':scope > .reveal-up');
+            const siblingIdx = Array.from(siblings).indexOf(el);
+            if (siblingIdx > 0) {
+                el.style.setProperty('--reveal-delay', `${siblingIdx * 0.08}s`);
+            }
+        }
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -40px 0px'
+    });
+
+    targets.forEach(el => observer.observe(el));
+})();
+
+// ─── MAGNETIC BUTTONS ────────────────────────────────────────────
+(function initMagneticButtons() {
+    document.querySelectorAll('.btn-primary').forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            btn.style.transform = `translate(${x * 0.18}px, ${y * 0.18}px) translateY(-1px)`;
+        });
+
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = '';
+        });
     });
 })();
